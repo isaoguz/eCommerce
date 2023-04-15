@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', function () {
+    return view('anasayfa');
+});*/
 
 
 Route::get('/merhaba',function (){
@@ -33,3 +33,7 @@ Route::get('/urun/{urunAdi}/{id?}',function ($urunAdi,$id=0){
 Route::get('/kampanya',function (){
     return redirect()->route('urun_detay',['urunAdi'=>'elma','id'=>5]);
 });
+
+
+//Controller ile kullanımı
+Route::get('/','AnasayfaController@index')->name('anasayfa');
