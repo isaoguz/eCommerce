@@ -13,6 +13,32 @@
         <!-- Styles -->
     </head>
     <body>
-                    Merhaba
+    @php
+    $yas = 29;
+    @endphp
+
+    @if($isim=='isa')
+        Hoşgledin Patron <br>
+    @elseif($isim=='baskan')
+        Hoşgeldin Başkan <br>
+    @else
+        Hoşgeldin <br>
+    @endif
+<hr>
+    @switch($isim)
+        @case('baskan')
+        Hoşgeldin baskan <br>
+        @break
+
+        @case('isa')
+        Hoşgeldin İsa <br>
+        @break
+
+    @endswitch
+
+    Merhaba {{$isim . ' ' . $soyisim}} , {{$yas}} yasındasın.
+
+
+
     </body>
 </html>
