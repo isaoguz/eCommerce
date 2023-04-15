@@ -17,6 +17,9 @@
     $yas = 29;
     @endphp
 
+    Merhaba {{$isim . ' ' . $soyisim}} , {{$yas}} yasındasın. <br>
+<hr>
+
     @if($isim=='isa')
         Hoşgledin Patron <br>
     @elseif($isim=='baskan')
@@ -36,8 +39,32 @@
 
     @endswitch
 
-    Merhaba {{$isim . ' ' . $soyisim}} , {{$yas}} yasındasın.
+<hr>
+    @for($i=0;$i<10; $i++)
+        Döngü Değeri : {{$i}}
+    @endfor
 
+    <hr>
+    @php
+    $i=0
+    @endphp
+    @while($i<10)
+        Döngü Değeri : {{$i}}
+        @php
+        $i++;
+        @endphp
+    @endwhile
+
+    <hr>
+    @foreach($isimler as $isim)
+    {{$isim . ($isim !==end($isimler) ? ',' : '')}}
+    @endforeach
+<hr>
+    @foreach($kullanicilar as $kullanici)
+        @continue($kullanici['id']==1)
+        <li>{{$kullanici['id'] . '-' . $kullanici['kullanici_adi']}}</li>
+        @break($kullanici['id']==4)
+    @endforeach
 
 
     </body>
