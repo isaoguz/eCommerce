@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/merhaba',function (){
+    return "Merahaba";
+});
+
+
+Route::get('/api/v1/merhaba',function (){
+    return ['message'=>'Merhaba'];
+});
+
+
+Route::get('/urun/{urunAdi}/{id?}',function ($urunAdi,$id=0){
+    return "Ürün Adı :  $id $urunAdi ";
+})->name('urun_detay');
+
+Route::get('/kampanya',function (){
+    return redirect()->route('urun_detay',['urunAdi'=>'elma','id'=>5]);
+});
