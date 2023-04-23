@@ -11,6 +11,15 @@ class UrunController extends Controller
         $urun=Urun::whereSlug($slug_urunadi)->firstOrFail();
         $kategoriler = $urun->kategoriler()->distinct()->get();
         return view('urun',compact('urun','kategoriler'));
+    }
 
+    public function ara(){
+        $aranan = request()->input('aranan');
+        $urunler = Urun::where('urun_adi','like',"%$aranan%")
+            /*->orWhere('aciklama','like',"%$aranan%")*/
+            ->paginate(8);
+/*            ->simplePaginate(8);*/
+        request()->flash();
+        return view('arama', compact('urunler'));
     }
 }
