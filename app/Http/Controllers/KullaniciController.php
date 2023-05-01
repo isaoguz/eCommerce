@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Mail\KullaniciKayitMail;
 use App\Models\Kullanici;
+use App\Models\KullaniciDetay;
+use App\Models\Sepet;
+use App\Models\SepetUrun;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -22,8 +26,43 @@ class KullaniciController extends Controller
            'email'=> 'required|email',
            'sifre'=> 'required'
         ]);
-        if (auth()->attempt(['email'=>request('email'),'password'=>request('sifre')],request()->has('benihatirla'))){
+        $credentials = [
+            'email'=>request('email'),
+            'password'=>request('sifre')
+         /*   'aktif_mi' =>1*/
+        ];
+
+        if (auth()->attempt($credentials,request()->has('benihatirla'))){
             request()->session()->regenerate();
+
+/*            $aktif_sepet_id = Sepet::firstOrCreate(['kullanici_id' => auth()->id()])->id;*/
+
+            $aktif_sepet_id = Sepet::aktif_sepet_id();
+            if (!is_null($aktif_sepet_id)){
+                $aktif_sepet = Sepet::create(['kullanici_id'=>auth()->id()]);
+                $aktif_sepet_id = $aktif_sepet->id;
+            }
+
+            session()->put('aktif_sepet_id',$aktif_sepet_id);
+
+            if (Cart::count()>0){
+                foreach(Cart::content() as $cartItem)
+                {
+                    SepetUrun::updateOrCreate(
+                        ['sepet_id'=>$aktif_sepet_id, 'urun_id'=>$cartItem->id],
+                        ['adet'=>$cartItem->qty, 'fiyati'=>$cartItem->price, 'durum'=>'Beklemede']
+                    );
+                }
+            }
+
+            Cart::destroy();
+            $sepetUrunler = SepetUrun::where('sepet_id',$aktif_sepet_id)->get();
+            foreach ($sepetUrunler as $sepetUrun)
+            {
+                Cart::add($sepetUrun->urun->id,$sepetUrun->urun->urun_adi,$sepetUrun->adet, $sepetUrun->fiyati,
+                ['slug'=>$sepetUrun->urun->slug]);
+            }
+
             return redirect()->intended('/');
         }else{
             $errors = ['email'=>'Hatalı giriş yapıldı.'];
@@ -47,6 +86,8 @@ class KullaniciController extends Controller
         'aktivasyon_anahtari' => Str::random(60),
         'aktif_mi' =>0
     ]);
+
+    $kullanici->detay()->save(new KullaniciDetay());
 
     Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));
 

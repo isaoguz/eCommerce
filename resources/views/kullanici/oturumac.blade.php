@@ -2,12 +2,15 @@
 @section('title','OturumAç')
 @section('content')
     <div class="container">
+        @include('layouts.partials.alert')
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Oturum Aç</div>
                     <div class="panel-body">
                         @include('layouts.partials.errors')
+
                         <form class="form-horizontal" role="form" method="POST" action="{{route('kullanici.oturumac')}}">
                             {{csrf_field()}}
                             <div class="form-group">

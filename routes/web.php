@@ -11,29 +11,23 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('anasayfa');
-});*/
-/*
+Route::group(['prefix'=>'yonetim','namespace'=> 'Yonetim'],function (){
+    Route::redirect('/','yonetim/oturumac');
+    Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
+    Route::get('/oturumukapat','KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
 
-Route::get('/merhaba',function (){
-    return "Merahaba";
+    Route::group(['middleware' => 'yonetim'],function (){
+        Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
+
+        Route::group(['prefix' => 'kullanici'], function () {
+            Route::match(['get', 'post'], '/', 'KullaniciController@index')->name('yonetim.kullanici');
+            Route::get('/yeni', 'KullaniciController@form')->name('yonetim.kullanici.yeni');
+            Route::get('/duzenle/{id}', 'KullaniciController@form')->name('yonetim.kullanici.duzenle');
+            Route::post('/kaydet/{id?}', 'KullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
+            Route::get('/sil/{id}', 'KullaniciController@sil')->name('yonetim.kullanici.sil');
+        });
+    });
 });
-
-
-Route::get('/api/v1/merhaba',function (){
-    return ['message'=>'Merhaba'];
-});
-
-
-Route::get('/urun/{urunAdi}/{id?}',function ($urunAdi,$id=0){
-    return "Ürün Adı :  $id $urunAdi ";
-})->name('urun_detay');
-
-Route::get('/kampanya',function (){
-    return redirect()->route('urun_detay',['urunAdi'=>'elma','id'=>5]);
-});*/
-
 
 //Controller ile kullanımı
 Route::get('/','AnasayfaController@index')->name('anasayfa');
@@ -46,10 +40,16 @@ Route::group(['prefix'=>'sepet'],function (){
     Route::get('/', 'SepetController@index')->name('sepet');
     Route::post('/ekle','SepetController@ekle')->name('sepet.ekle');
     Route::delete('/kaldir/{rowid}','SepetController@kaldir')->name('sepet.kaldir');
+    Route::delete('/bosalt','SepetController@bosalt')->name('sepet.bosalt');
+    Route::patch('/guncelle/{rowid}','SepetController@guncelle')->name('sepet.guncelle');
 });
 
+Route::get('/odeme','OdemeController@index')->name('odeme');
+Route::post('/odeme','OdemeController@odemeyap')->name('odemeyap');
+
+
+
 Route::group(['middleware'=>'auth'],function (){
-    Route::get('/odeme','OdemeController@index')->name('odeme');
     Route::get('/siparisler' ,'SiparisController@index')->name('siparisler');
     Route::get('/siparisler/{id}','SiparisController@detay')->name('siparis');
 });
