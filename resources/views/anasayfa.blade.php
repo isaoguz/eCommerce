@@ -5,31 +5,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Kategoriler</div>
-                    <div class="list-group categories">
+                <div class="panel panel-default" >
+                    <div class="panel-heading" style="background-color: #333333;"> <p style="color: white; text-align: center; font-size: 1.5em;" > Kategoriler</p></div>
+                    <div class="list-group categories" >
                         @foreach($kategoriler as $kategori)
                         <a href="{{route('kategori',$kategori->slug)}}" class="list-group-item">
-                            <i class="fa fa-arrow-circle-o-right"></i>
+                            <i class="fa fa-sign-in"></i>
                             {{$kategori->kategori_adi}}</a>
                         @endforeach
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-9">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         @for($i=0;$i<count($urunler_slider); $i++)
                             <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class="{{$i==0 ? 'active' : ''}}"></li>
                         @endfor
                     </ol>
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner" role="listbox" >
                         @foreach($urunler_slider as $index=>$urun)
-                        <div class="item {{$index==0 ? 'active':''}}">
-                            <img src="http://via.placeholder.com/640x400?text=UrunResmi" alt="...">
-                            <div class="carousel-caption">
+                        <div class="item {{$index==0 ? 'active':''}}" >
+                            <img src="{{ $urun->detay->urun_resmi!=null ? asset('uploads/urunler/' . $urun->detay->urun_resmi) : 'http://via.placeholder.com/640x400?text=UrunResmi' }}" class="img-responsive" style="min-width: 100%;">
+                     {{--       <div class="carousel-caption">
                                {{$urun->urun_adi}}
-                            </div>
+                            </div>--}}
                         </div>
                         @endforeach
                     </div>
@@ -43,17 +43,21 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-3">
+   {{--         <div class="col-md-3">
                 <div class="panel panel-default" id="sidebar-product">
                     <div class="panel-heading">Günün Fırsatı</div>
                     <div class="panel-body">
                         <a href="{{route('urun',$urun_gunun_firsati->slug)}}">
-                            <img src="http://via.placeholder.com/480x485?text=UrunResmi" class="img-responsive">
+                            <img src="{{$urun_gunun_firsati->detay->urun_resmi!=null ?  asset('uploads/urunler/'.$urun_gunun_firsati->detay->urun_resmi) : '
+                    http://via.placeholder.com/400x485?text=UrunResmi'}}" class="img-responsive"
+                            style="min-width: 100%;">
+
+
                             {{$urun_gunun_firsati->urun_adi}}
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </div>
     </div>
     <div class="container">
@@ -64,7 +68,11 @@
                     <div class="row">
                         @foreach($urunler_one_cikan as $urun)
                         <div class="col-md-3 product">
-                            <a href="{{route('urun',$urun->slug)}}"><img src="http://via.placeholder.com/400x400?text=UrunResmi"></a>
+                            <a href="{{route('urun',$urun->slug)}}">
+                                <img src="{{$urun->detay->urun_resmi!=null ?  asset('uploads/urunler/'.$urun->detay->urun_resmi) : '
+http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
+                                     style="min-width: 100%;">
+                            </a>
                             <p><a href="{{route('urun',$urun->slug)}}">{{$urun->urun_adi}}</a></p>
                             <p class="price">{{$urun->fiyati}}</p>
                         </div>
@@ -81,7 +89,11 @@
                     <div class="row">
                         @foreach($urunler_cok_satan as $urun)
                             <div class="col-md-3 product">
-                                <a href="{{route('urun',$urun->slug)}}"><img src="http://via.placeholder.com/400x400?text=UrunResmi"></a>
+                                <a href="{{route('urun',$urun->slug)}}">
+                                    <img src="{{$urun->detay->urun_resmi!=null ?  asset('uploads/urunler/'.$urun->detay->urun_resmi) : '
+http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
+                                         style="min-width: 100%;">
+                                </a>
                                 <p><a href="{{route('urun',$urun->slug)}}">{{$urun->urun_adi}}</a></p>
                                 <p class="price">{{$urun->fiyati}}</p>
                             </div>
@@ -97,7 +109,11 @@
                     <div class="row">
                         @foreach($urunler_indirimli as $urun)
                             <div class="col-md-3 product">
-                                <a href="{{route('urun',$urun->slug)}}"><img src="http://via.placeholder.com/400x400?text=UrunResmi"></a>
+                                <a href="{{route('urun',$urun->slug)}}">
+                                    <img src="{{$urun->detay->urun_resmi!=null ?  asset('uploads/urunler/'.$urun->detay->urun_resmi) : '
+http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
+                                         style="min-width: 100%;">
+                                </a>
                                 <p><a href="{{route('urun',$urun->slug)}}">{{$urun->urun_adi}}</a></p>
                                 <p class="price">{{$urun->fiyati}}</p>
                             </div>

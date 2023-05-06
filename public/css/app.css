@@ -140,7 +140,7 @@ a {
 }
 
 #commerce {
-  background-color: #f0f0f0;
+  background-color: #dddddd;
 }
 
 #commerce h2 {
@@ -158,7 +158,8 @@ a {
 }
 
 #commerce .navbar-brand {
-  width: 270px;
+  width: 500px;
+
 }
 
 #commerce .navbar-brand img {
@@ -224,7 +225,8 @@ a {
 }
 
 #commerce .list-group.categories {
-  font-size: 0.8rem;
+  font-size: 1rem;
+
 }
 
 #commerce .bg-content {
