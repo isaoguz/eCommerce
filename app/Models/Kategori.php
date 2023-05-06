@@ -16,8 +16,18 @@ class Kategori extends Model
     const DELETED_AT = 'silinme_tarihi';
 
 
-    //Bir kategoriye ait ürünleri çekme
-    public function urunler(){
-        return $this->belongsToMany('App\Models\Urun','kategori_urun');
+    public function urunler()
+    {
+        return $this->belongsToMany('App\Models\Urun', 'kategori_urun');
+    }
+    public function alt_kategoriler()
+    {
+        return $this->hasMany('App\Models\Kategori', 'ust_id', 'id');
+    }
+
+    public function ust_kategori() {
+        return $this->belongsTo('App\Models\Kategori', 'ust_id')->withDefault([
+            'kategori_adi' => 'Ana Kategori'
+        ]);
     }
 }
