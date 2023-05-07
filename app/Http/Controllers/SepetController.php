@@ -15,6 +15,7 @@ class SepetController extends Controller
         $this->middleware('auth');
     }
     public  function index(){
+
         return view('sepet');
     }
 

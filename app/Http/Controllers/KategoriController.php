@@ -22,9 +22,9 @@ class KategoriController extends Controller
         }else if ($order=='yeni'){
              $urunler=$kategori->urunler()
                 ->distinct()
-                ->orderByDesc('guncelleme_tarihi')->paginate(2);
+                ->orderByDesc('guncelleme_tarihi')->paginate(4);
         }else{
-            $urunler = $kategori->urunler()->paginate(2);
+            $urunler = $kategori->urunler()->paginate(4);
 
         }
 

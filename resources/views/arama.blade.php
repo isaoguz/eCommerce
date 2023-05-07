@@ -16,8 +16,9 @@
         @foreach($urunler as $urun)
             <div class="col-md-3 product">
                 <a href="{{route('urun',$urun->slug)}}">
-                    <img src="http://via.placeholder.com/640x400?text=UrunResmi" alt="{{$urun->urun_adi}}">
-                </a>
+                    <img src="{{$urun->detay->urun_resmi!=null ?  asset('uploads/urunler/'.$urun->detay->urun_resmi) : '
+http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
+                         style="min-width: 100%;">                </a>
                 <p><a href="{{route('urun',$urun->slug)}}">
                         {{$urun->urun_adi}}
                     </a> </p>

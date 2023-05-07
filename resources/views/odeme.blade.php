@@ -20,12 +20,27 @@
                                 Ay
                                 <select name="son_kullanma_tarihi_ay" id="son_kullanma_tarihi_ay" class="form-control" required>
                                     <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 Yıl
                                 <select id="son_kullanma_tarihi_yil" name="son_kullanma_tarihi_yil" class="form-control" required>
-                                    <option>2017</option>
+                                    <option>2027</option>
+                                    <option>2028</option>
+                                    <option>2029</option>
+                                    <option>2030</option>
                                 </select>
                             </div>
                         </div>
@@ -54,7 +69,7 @@
                 </div>
                 <div class="col-md-7">
                     <h4>Ödenecek Tutar</h4>
-                    <span class="price">{{Cart::total()}} <small>TL</small></span>
+                    <span class="price" style="font-family: 'Arial Black'">{{Cart::total()}} <small>TL</small></span>
 
                 <h4>İletişim ve Fatura Bilgileri</h4>
                     <div class="row">

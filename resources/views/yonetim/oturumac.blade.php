@@ -26,7 +26,7 @@
                 <input type="checkbox" name="benihatirla" value="1" checked> Beni Hatırla
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
+        <button class="btn btn-lg btn-primary btn-block"  type="submit">Giriş Yap</button>
         <div class="links">
             <a href="{{route('anasayfa')}}"> Siteye Dön</a>
         </div>

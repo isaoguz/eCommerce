@@ -67,12 +67,13 @@ body {
 }
 
 .form-signin .btn-primary {
-    background-color: #f4645f;
-    border-color: #f4645f;
+    background-color: #555555;
+    color: white;
 }
 
 .form-signin .btn-primary:hover {
-    background-color: #e74430 !important;
-    border-color: #e74430 !important;
+    background-color: #aaaaaa !important;
+    /*
     color: #fff !important;
+    */
 }

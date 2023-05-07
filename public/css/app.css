@@ -159,7 +159,6 @@ a {
 
 #commerce .navbar-brand {
   width: 500px;
-
 }
 
 #commerce .navbar-brand img {
@@ -175,8 +174,10 @@ a {
   color: #333;
   font-weight: 600;
   border-color: #ddd;
-  border-top: 2px solid #e52d04;
+  border-top: 4px solid #636b6f;
   background: linear-gradient(to bottom, #fff 0%, #dfdfdf 100%);
+    text-align: center;
+    font-size: 1.5em;
 }
 
 #commerce .panel-default h3 {
@@ -187,7 +188,7 @@ a {
 
 #commerce .badge-theme {
   font-weight: 400;
-  background-color: #e52d04;
+  background-color: #6cb2eb;
   margin-top: -15px;
 }
 
@@ -260,7 +261,7 @@ a {
   font-weight: 600;
   border-bottom: inherit;
   margin-top: 1px;
-  border-top: 2px solid #e52d04;
+  border-top: 2px solid #6cb2eb;
   background: linear-gradient(to top, #fff 0%, #dfdfdf 100%);
 }
 

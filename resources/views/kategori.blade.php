@@ -63,7 +63,7 @@
                                 </a>
                                 <p><a href="{{route('urun',$urun->slug)}}">{{$urun->urun_adi}}</a></p>
                                 <p class="price">{{$urun->fiyati}}</p>
-                                <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>
+                                <p><a href="{{route('urun',$urun->slug)}}" class="btn btn-theme" style="background-color: #6cb2eb;">Sepete Ekle</a></p>
                             </div>
                         @endforeach
                     </div>

@@ -112,7 +112,7 @@
                 placeholder:'Lütfen kategori seçiniz'
             })
 
-            var options = {
+            /*var options = {
                 uiColor: '#f4645f',
                 language:'tr',
                 extraPlugins: 'autogrow',
@@ -120,7 +120,7 @@
                 autoGrow_maxHeight : 600
             };
 
-            CKEDITOR.replace('aciklama',options);
+            CKEDITOR.replace('aciklama',options);*/
         });
     </script>
 @endsection

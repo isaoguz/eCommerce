@@ -74,7 +74,7 @@ http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
                                      style="min-width: 100%;">
                             </a>
                             <p><a href="{{route('urun',$urun->slug)}}">{{$urun->urun_adi}}</a></p>
-                            <p class="price">{{$urun->fiyati}}</p>
+                            <p class="price" style="font-family: 'Arial Narrow'">{{$urun->fiyati}} TL</p>
                         </div>
                         @endforeach
                     </div>
@@ -82,7 +82,7 @@ http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
             </div>
         </div>
         <hr>
-        <div class="products">
+    {{--    <div class="products">
             <div class="panel panel-theme">
                 <div class="panel-heading">Çok Satan Ürünler</div>
                 <div class="panel-body">
@@ -121,6 +121,6 @@ http://via.placeholder.com/400x400?text=UrunResmi'}}" class="img-responsive"
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 @endsection

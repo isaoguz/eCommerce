@@ -14,13 +14,18 @@
                         <th>Tutar</th>
                     </tr>
                     @foreach(Cart::content() as $urunCartItem)
+
                         <tr>
-                            <td style="width: 120px;">
+                            {{--<td style="width: 120px;">--}}
 {{--
                                 <a href="{{route('urun',$urunCartItem->options->slug)}}"></a>
 --}}
-                                    <img src="http://via.placeholder.com/120x100?text=UrunResmi">
-                            </td>
+
+{{--
+                                <img src="{{ asset('public/uploads/urunler/36_1683384665.jpeg') }}" alt="Resim">
+--}}
+
+                            {{--</td>--}}
                             <td>
 {{--
                                <a href="{{route('urun', $urunCartItem->options->slug)}}"></a>
@@ -45,7 +50,7 @@
                                 {{$urunCartItem->subtotal}} TL
                             </td>
                         </tr>
-                    @endforeach
+                        @endforeach
                     <tr>
                         <th colspan="4" class="text-right">Alt Toplam</th>
                         <td class="text-right">{{Cart::subtotal()}} TL</td>
